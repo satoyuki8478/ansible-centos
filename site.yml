@@ -1,0 +1,6 @@
+- hosts: servers
+  become: yes
+  roles:
+    - java/8
+    - glassfish/4.1
+    - postgresql/9.5

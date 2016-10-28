@@ -1,0 +1,21 @@
+- name: Download RPM of PostgreSQL repository
+  get_url: url={{download_url}} dest=.
+
+- name: Install RPM
+  yum: name={{download_file}}
+
+- name: Install PostgreSQL
+  yum: name={{item.name}}
+  with_items:
+    - name: postgresql95-server
+    - name: postgresql95-devel
+    - name: postgresql95-contrib
+
+- name: Initialize database
+  command: "/usr/pgsql-9.5/bin/postgresql95-setup initdb"
+
+- name: Register service
+  service: name=postgresql-9.5 state=started enabled=yes
+
+- name: Cleanup
+  file: state=absent path={{download_file}}

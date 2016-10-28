@@ -1,0 +1,23 @@
+- name: Install Unzip
+  yum: name=unzip
+
+- name: Download GlassFish
+  get_url: url={{download_url}} dest=.
+
+- name: Copy and Unzip files
+  unarchive: src={{download_file}} dest=/opt/
+
+- name: Add user
+  user: name=glassfish
+
+- name: Setting permission
+  file: path=/opt/glassfish4 owner=glassfish group=glassfish recurse=yes state=directory
+
+- name: Copy glassfish.service
+  copy: src=glassfish.service dest=/lib/systemd/system/
+
+- name: Register service
+  service: name=glassfish state=started enabled=yes
+
+- name: Cleanup
+  file: state=absent path={{download_file}}
