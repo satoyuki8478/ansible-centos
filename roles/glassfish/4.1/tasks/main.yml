@@ -13,6 +13,16 @@
 - name: Setting permission
   file: path=/opt/glassfish4 owner=glassfish group=glassfish recurse=yes state=directory
 
+- name: Remove module of org.eclipse.persistence
+  file: path={{ item }} state=absent
+  with_fileglob:
+    - "/opt/glassfish4/glassfish/modules/org.eclipse.persistence.*"
+
+- name: Copy module of org.eclipse.persistence
+  copy: src={{ item }} dest=/opt/glassfish4/glassfish/modules/ owner=glassfish group=glassfish mode=0644
+  with_fileglob:
+    - "org.eclipse.persistence/*"
+
 - name: Copy glassfish.service
   copy: src=glassfish.service dest=/lib/systemd/system/
 
