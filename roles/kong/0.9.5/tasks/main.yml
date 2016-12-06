@@ -1,0 +1,33 @@
+- name: Download Kong
+  get_url: url={{download_url}} dest=.
+
+- name: Install Kong
+  yum: name={{download_file}}
+
+- name: Remove kong.conf.default
+  file: state=absent path=/etc/kong/kong.conf.default
+
+- name: Copy kong.conf
+  copy: src=kong.conf dest=/etc/kong
+
+- name : Create database
+  postgresql_db: 
+    name: "{{ database }}"
+    encoding: "UTF-8"
+    login_user: postgres
+  sudo_user: postgres
+  sudo: yes
+
+- name: Create user
+  postgresql_user: 
+    db: "{{ database }}"
+    name: "{{ user }}"
+    password: "{{ password }}"
+    priv: ALL
+    state: present
+    login_user: postgres
+  sudo_user: postgres
+  sudo: yes
+
+- name: Cleanup
+  file: state=absent path={{download_file}}

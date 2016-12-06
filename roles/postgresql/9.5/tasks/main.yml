@@ -10,6 +10,7 @@
     - name: postgresql95-server
     - name: postgresql95-devel
     - name: postgresql95-contrib
+    - name: python-psycopg2
 
 - name: Initialize database
   command: "/usr/pgsql-9.5/bin/postgresql95-setup initdb"

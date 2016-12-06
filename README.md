@@ -28,6 +28,14 @@ Make a configuration of servers by Ansible.
 │   │       │   └── main.yml
 │   │       └── vars
 │   │           └── main.yml
+│   ├── kong
+│   │   └── 0.9.5
+│   │       ├── files
+│   │       │   └── kong.conf
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── vars
+│   │           └── main.yml
 │   ├── minio
 │   │   └── latest
 │   │       ├── files

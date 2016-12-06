@@ -5,3 +5,4 @@
     - glassfish/4.1
     - postgresql/9.5
     - minio/latest
+    - kong/0.9.5
