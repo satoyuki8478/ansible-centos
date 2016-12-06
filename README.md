@@ -9,29 +9,41 @@ Make a configuration of servers by Ansible.
 
 - provides
 ```
+.
+├── LICENSE
+├── README.md
 ├── hosts
-├── site.yml
-└── roles
-    ├── glassfish
-    │   └── 4.1
-    │       ├── files
-    │       │   └── glassfish.service
-    │       ├── tasks
-    │       │   └── main.yml
-    │       └── vars
-    │           └── main.yml
-    ├── java
-    │   └── 8
-    │       ├── tasks
-    │       │   └── main.yml
-    │       └── vars
-    │           └── main.yml
-    └── postgresql
-        └── 9.5
-            ├── tasks
-            │   └── main.yml
-            └── vars
-                └── main.yml
+├── roles
+│   ├── glassfish
+│   │   └── 4.1
+│   │       ├── files
+│   │       │   └── glassfish.service
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── vars
+│   │           └── main.yml
+│   ├── java
+│   │   └── 8
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── vars
+│   │           └── main.yml
+│   ├── minio
+│   │   └── latest
+│   │       ├── files
+│   │       │   ├── minio.conf
+│   │       │   └── minio.service
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── vars
+│   │           └── main.yml
+│   └── postgresql
+│       └── 9.5
+│           ├── tasks
+│           │   └── main.yml
+│           └── vars
+│               └── main.yml
+└── site.yml
 ```
 
 ## Requirement

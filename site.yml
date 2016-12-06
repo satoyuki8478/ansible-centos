@@ -4,3 +4,4 @@
     - java/8
     - glassfish/4.1
     - postgresql/9.5
+    - minio/latest

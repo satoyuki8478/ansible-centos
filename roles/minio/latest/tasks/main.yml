@@ -1,0 +1,28 @@
+- name: Create directory
+  file: path={{ item }} state=directory owner=root group=root mode=755
+  with_items:
+    - /opt/Minio
+    - /opt/Minio/bin
+    - /opt/Minio/etc
+    - /opt/Minio/export
+
+- name: Download Minio Server
+  get_url: url={{server_download_url}} dest=/opt/Minio/bin
+
+- name: Add execute permission
+  file: path=/opt/Minio/bin/minio mode=755
+
+- name: Download Minio Client
+  get_url: url={{client_download_url}} dest=/opt/Minio/bin
+
+- name: Add execute permission
+  file: path=/opt/Minio/bin/mc mode=755
+
+- name: Copy minio.conf
+  copy: src=minio.conf dest=/opt/Minio/etc
+
+- name: Copy minio.service
+  copy: src=minio.service dest=/lib/systemd/system/
+
+- name: Register service
+  service: name=minio state=started enabled=yes
