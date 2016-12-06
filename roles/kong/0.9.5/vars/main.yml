@@ -1,0 +1,5 @@
+download_file: kong-0.9.5.el7.noarch.rpm
+download_url: http://github.com/Mashape/kong/releases/download/0.9.5/kong-0.9.5.el7.noarch.rpm
+database: kong
+user: kong
+password: kong
