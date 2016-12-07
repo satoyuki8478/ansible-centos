@@ -1,5 +1,5 @@
 - name: Create directory
-  file: path={{ item }} state=directory owner=root group=root mode=755
+  file: path={{item}} state=directory owner=root group=root mode=755
   with_items:
     - /opt/Minio
     - /opt/Minio/bin

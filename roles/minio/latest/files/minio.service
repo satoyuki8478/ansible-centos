@@ -8,22 +8,14 @@ AssertFileIsExecutable=/opt/Minio/bin/minio
 [Service]
 User=root
 Group=root
-
 PermissionsStartOnly=true
-
 EnvironmentFile=-/opt/Minio/etc/minio.conf
-
 ExecStart=/opt/Minio/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
-
 StandardOutput=journal
 StandardError=inherit
-
 KillSignal=SIGTERM
-
 SendSIGKILL=no
-
 SuccessExitStatus=0
 
 [Install]
 WantedBy=multi-user.target
-
