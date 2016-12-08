@@ -6,3 +6,4 @@
     - postgresql/9.5
     - minio/latest
     - kong/0.9.5
+    - gitlab/latest
