@@ -1,0 +1,2 @@
+download_file: script.rpm.sh
+download_url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh

@@ -1,0 +1,39 @@
+- name: Install packages
+  yum: name={{item.name}}
+  with_items:
+    - name: curl
+    - name: policycoreutils
+    - name: openssh-server
+    - name: openssh-clients
+
+- name: Download GitLab package
+  get_url: url={{download_url}} dest=.
+
+- name: Install GitLab package
+  command: 'bash {{download_file}}'
+
+- name: Install GitLab-CE
+  yum: name=gitlab-ce
+
+- name: Configure worker_timeout
+  lineinfile: >-
+    dest="/etc/gitlab/gitlab.rb"
+    state=present
+    backrefs=yes
+    regexp="^# unicorn\['worker_timeout'\] = 60"
+    line="unicorn['worker_timeout'] = 600"
+
+- name: Configure external_url
+  lineinfile: >-
+    dest="/etc/gitlab/gitlab.rb"
+    state=present
+    backrefs=yes
+    regexp="external_url 'http://localhost.dev'"
+    line="external_url 'http://localhost/gitlab'"
+
+- name: GitLab reconfigure
+  command: 'gitlab-ctl reconfigure'
+
+- name: Cleanup
+  file: state=absent path={{download_file}}
+
