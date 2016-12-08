@@ -31,6 +31,14 @@
     regexp="external_url 'http://localhost.dev'"
     line="external_url 'http://localhost/gitlab'"
 
+#- name: Configure unicorn_port
+#  lineinfile: >-
+#    dest="/etc/gitlab/gitlab.rb"
+#    state=present
+#    backrefs=yes
+#    regexp="^# unicorn\['port'\] = 8080"
+#    line="unicorn['port'] = 18080"
+
 - name: GitLab reconfigure
   command: 'gitlab-ctl reconfigure'
 
