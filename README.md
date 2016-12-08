@@ -14,6 +14,12 @@ Make a configuration of servers by Ansible.
 ├── README.md
 ├── hosts
 ├── roles
+│   ├── gitlab
+│   │   └── latest
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── vars
+│   │           └── main.yml
 │   ├── glassfish
 │   │   └── 4.1
 │   │       ├── files
